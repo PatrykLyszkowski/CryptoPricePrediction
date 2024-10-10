@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cryptocurrency Price Prediction</title>
+</head>
+<body>
+    <h1>Cryptocurrency Price Prediction</h1>
+    <form method="POST">
+        <label for="crypto_select">Select a cryptocurrency:</label>
+        <select id="crypto_select" name="crypto_select">
+            {% for crypto in top_20 %}
+                <option value="{{ crypto.id }}" {% if crypto.id == selected_crypto %}selected{% endif %}>
+                    {{ crypto.name }} ({{ crypto.symbol }})
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Show">
+    </form>
+
+    <h2>Linear Regression Model</h2>
+    <img src="data:image/png;base64,{{ plot_url1 }}" alt="Linear Regression Plot">
+
+    <h2>LSTM Model</h2>
+    <img src="data:image/png;base64,{{ plot_url2 }}" alt="LSTM Plot">
+
+</body>
+</html>
